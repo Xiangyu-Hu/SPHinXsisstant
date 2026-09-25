@@ -28,11 +28,25 @@ Generated local user-testing output is not authoritative project source code.
 
 ### 1. Clone the assistant project and upstream repositories
 
+Choose one assistant-project clone option:
+
+Official / supervisor repository:
+
 ```bash
 git clone https://github.com/Xiangyu-Hu/SPHinXsisstant.git
+cd SPHinXsisstant
+```
+
+Or use the development mirror:
+
+```bash
 git clone https://github.com/XiangruZhang007/SPHinX_AI_Assistant.git
 cd SPHinX_AI_Assistant
+```
 
+After either option, clone the upstream repositories:
+
+```bash
 mkdir -p repos tools
 git clone https://github.com/Xiangyu-Hu/SPHinXsys.git repos/SPHinXsys
 git clone https://github.com/Xiangyu-Hu/SPHinXsim.git repos/SPHinXsim
@@ -163,6 +177,20 @@ and `push` modes, plus **Submit current session**:
   commit, and does not push.
 - `push` validates, stages exactly the selected session, creates a commit if
   needed, and pushes to the selected remote.
+
+For the current normal tester workflow:
+
+1. Select the project remote, normally `origin`.
+2. Select `dry-run` and click **Submit current session**.
+3. If the dry-run succeeds, switch directly to `push`.
+4. Click **Submit current session** again.
+
+**Do not use `no-push` in the current normal tester workflow.** `no-push`
+creates a local commit without pushing. If that same session is later submitted
+in `push` mode, Submission V1 currently detects it as already committed and
+returns "Nothing to submit" instead of pushing the existing local commit.
+Therefore use `dry-run` followed directly by `push`. This is a known current V1
+limitation, not intended final behavior.
 
 Using `push` mode requires authenticated local Git/GitHub credentials and write
 permission for the selected remote. Public repository access is sufficient for
