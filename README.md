@@ -142,13 +142,9 @@ echo "BASE_URL=$LLM_BASE_URL"
 Never commit API keys or store them in repository files. Environment variables
 apply only to the current terminal unless configured elsewhere by the user.
 
-Start the local Gradio interface. The following path assumes that the project
-was cloned under `~/Projects`; otherwise, replace it with the actual local clone
-location.
+Start the local Gradio interface from the project root:
 
 ```bash
-cd ~/Projects/SPHinX_AI_Assistant
-
 env -u PYTHONPATH -u PYTHONHOME PYTHONDONTWRITEBYTECODE=1 \
 tools/treesitter-chunker/.venv/bin/python \
 apps/gradio_app_v1.py
